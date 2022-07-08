@@ -7,7 +7,7 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   try {
     let flat = await Flat.create(req.body);
-    console.log(flat);
+    // console.log(flat);
     return res.status(201).send({ flat });
   } catch (e) {
     return res.status(500).json({ status: "Failed", message: e.message });
