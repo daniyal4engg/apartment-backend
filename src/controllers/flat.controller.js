@@ -31,7 +31,7 @@ router.patch("/:id", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     let flat = await Flat.findById(req.params.id)
-      .populate("residents")
+      //   .populate("residents")
       .lean()
       .exec();
 
@@ -42,8 +42,8 @@ router.get("/:id", async (req, res) => {
 });
 router.get("/", async (req, res) => {
   try {
-    let flat = await Flat.find().populate("flat").lean().exec();
-
+    let flat = await Flat.find().lean().exec();
+    // populate("flat")
     return res.status(201).send(flat);
   } catch (e) {
     return res.status(500).json({ status: "Failed", message: e.message });
@@ -64,7 +64,7 @@ router.get("/:filter/:sort", async (req, res) => {
 
     if (filter == 0 && sort == 0) {
       let flats = await Flat.find()
-        .populate("residents")
+        // .populate("residents")
         .skip(skip)
         .limit(size)
         .lean()
@@ -77,7 +77,7 @@ router.get("/:filter/:sort", async (req, res) => {
       let flats = await Flat.find({ type: filter })
         .skip(skip)
         .limit(size)
-        .populate("residents")
+        // .populate("residents")
         .lean()
         .exec();
 
@@ -91,7 +91,7 @@ router.get("/:filter/:sort", async (req, res) => {
         .sort({ flat_number: +sort })
         .skip(skip)
         .limit(size)
-        .populate("residents")
+        // .populate("residents")
         .lean()
         .exec();
 
@@ -105,7 +105,7 @@ router.get("/:filter/:sort", async (req, res) => {
         .sort({ flat_number: +sort })
         .skip(skip)
         .limit(size)
-        .populate("residents")
+        // .populate("residents")
         .lean()
         .exec();
 
