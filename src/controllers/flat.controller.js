@@ -30,10 +30,8 @@ router.patch("/:id", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    let flat = await Flat.findById(req.params.id)
-      .populate("residents")
-      .lean()
-      .exec();
+    let flat = await Flat.findById(req.params.id).lean().exec();
+    // .populate("residents")
 
     return res.status(201).send(flat);
   } catch (e) {
