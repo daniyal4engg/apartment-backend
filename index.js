@@ -5,7 +5,7 @@ require("dotenv").config();
 const userController = require("./src/controllers/user.controller");
 
 const productController = require("./src/controllers/product.controller");
-
+const flatController = require("./src/controllers/flat.controller");
 const connect = require("./src/configs/db");
 
 const { register, login, email } = require("./src/controllers/auth.controller");
@@ -23,6 +23,10 @@ app.post("/email", email);
 
 app.use("/users", userController);
 app.use("/product", productController);
+
+// flat and manager
+// app.use("/manager", managerController);
+app.use("/flat", flatController);
 
 app.listen(process.env.PORT || 5000, async () => {
   try {
