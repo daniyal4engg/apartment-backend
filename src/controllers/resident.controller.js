@@ -4,7 +4,7 @@ const Resident = require("../models/resident.model");
 
 const router = express.Router();
 
-router.post("", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     let resident = await Resident.create(req.body);
 

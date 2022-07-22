@@ -31,7 +31,7 @@ app.use("/flat", flatController);
 app.listen(process.env.PORT || 5000, async () => {
   try {
     await connect();
-    console.log("Rocking On Port 5000");
+    console.log("Listening On Port 5000");
   } catch (err) {
     console.log(err.message);
   }
